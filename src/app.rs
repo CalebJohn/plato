@@ -16,6 +16,7 @@ use crate::view::frontlight::FrontlightWindow;
 use crate::view::menu::{Menu, MenuKind};
 use crate::view::sketch::Sketch;
 use crate::view::calculator::Calculator;
+use crate::view::draw::Draw;
 use crate::input::{DeviceEvent, PowerSource, ButtonCode, ButtonStatus};
 use crate::input::{raw_events, device_events, usb_events, display_rotate_event};
 use crate::gesture::{GestureEvent, gesture_events};
@@ -755,6 +756,7 @@ pub fn run() -> Result<(), Error> {
                         Box::new(Sketch::new(context.fb.rect(), &tx, &mut context))
                     },
                     AppId::Calculator => Box::new(Calculator::new(context.fb.rect(), &tx, &mut context)?),
+                    AppId::Draw => Box::new(Draw::new(context.fb.rect(), &tx, &mut context)),
                 };
                 transfer_notifications(view.as_mut(), next_view.as_mut(), &mut context);
                 history.push(HistoryItem {

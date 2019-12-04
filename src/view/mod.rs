@@ -38,6 +38,7 @@ pub mod home;
 pub mod reader;
 pub mod sketch;
 pub mod calculator;
+pub mod draw;
 
 use std::time::Duration;
 use std::path::PathBuf;
@@ -273,6 +274,7 @@ pub enum Event {
     Finished,
     ClockTick,
     BatteryTick,
+    RenderTick,
     ToggleFrontlight,
     Load(PathBuf),
     LoadPreset(usize),
@@ -297,6 +299,7 @@ pub enum Event {
 pub enum AppId {
     Sketch,
     Calculator,
+    Draw,
 }
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
